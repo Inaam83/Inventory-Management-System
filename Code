@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class InventoryManagementSystem {
+  
+  static ArrayList<String> itemList = new ArrayList<>();
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int choice;
+    
+    do {
+      System.out.println("Inventory Management System");
+      System.out.println("1. Add Item");
+      System.out.println("2. Display Items");
+      System.out.println("3. Remove Item");
+      System.out.println("4. Exit");
+      System.out.print("Enter your choice: ");
+      choice = sc.nextInt();
+      
+      switch (choice) {
+        case 1:
+          System.out.print("Enter item name: ");
+          String itemName = sc.next();
+          itemList.add(itemName);
+          System.out.println("Item added successfully.");
+          break;
+        case 2:
+          System.out.println("List of items in inventory:");
+          for (String item : itemList) {
+            System.out.println(item);
+          }
+          break;
+        case 3:
+          System.out.print("Enter item name to remove: ");
+          itemName = sc.next();
+          if (itemList.remove(itemName)) {
+            System.out.println("Item removed successfully.");
+          } else {
+            System.out.println("Item not found in the inventory.");
+          }
+          break;
+        case 4:
+          System.out.println("Exiting Inventory Management System...");
+          break;
+        default:
+          System.out.println("Invalid choice. Please enter a valid choice.");
+      }
+    } while (choice != 4);
+  }
+}
